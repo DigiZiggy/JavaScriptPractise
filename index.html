@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JavaScript Practise</title>
+</head>
+<body style="padding:0px !important;">
+<script>
+
+    function remove(elem) {
+        console.log(elem);
+        //var t = document.getElementById( "tabel" );
+        p = elem.parentNode.parentNode;
+        t = p.parentNode;
+        t.removeChild(p);
+
+    }
+
+    function up(elem) {
+        console.log(elem);
+        var row = elem.parentNode.parentNode,
+            sibling = row.previousElementSibling,
+            parent = row.parentNode;
+
+        parent.insertBefore(row, sibling);
+    }
+
+    function down(elem) {
+        console.log(elem);
+        var row = elem.parentNode.parentNode,
+            sibling = row.nextElementSibling,
+            parent = row.parentNode;
+
+        parent.insertBefore(sibling, row);
+    }
+
+    function fillTable( tId ) {
+        var t = document.getElementById( tId );
+        var t1 = document.getElementById("text1").value;
+        var t2 = document.getElementById("text2").value;
+        t.innerHTML += "<tr><td>"+t1+"</td><td>"+t2+"</td>" +
+            "<td><img src=\"https://img.icons8.com/material-outlined/24/000000/up.png\" style=\"width:20px;\" onclick='up(this);'>" +
+            "<img src=\"https://img.icons8.com/material-outlined/24/000000/down.png\" style=\"width:20px;\" onclick='down(this);'>" +
+            "<img src=\"https://img.icons8.com/color/48/000000/delete-sign.png\" style=\"width:20px;\" onclick='remove(this);'></td>" +
+            "</tr>";
+    }
+
+</script>
+<table>
+    <tbody id="tabel">
+
+    </tbody>
+</table>
+<div style="margin: 20px 0px 20px 0px;">
+    <input type="text" id="text1">
+    <input type="text" id="text2">
+    <input type="button" value="Add row" onclick="fillTable('tabel')">
+</div>
+
+</body>
+</html>
+
+<!--
+ ==== SAME WITH JQUERY BELOW ====
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body style="padding:0px !important;">
+<script>
+
+    function remove(elem) {
+        console.log(elem);
+        //var t = document.getElementById( "tabel" );
+        p = elem.parentNode.parentNode;
+        t = p.parentNode;
+        t.removeChild(p);
+
+    }
+    function fillTable( tId ) {
+        var t = document.getElementById( tId );
+        var t1 = document.getElementById("text1").value;
+        var t2 = document.getElementById("text2").value;
+        t.innerHTML += "<tr style=\"cursor: -webkit-grab; cursor: grab;\"><td>"+t1+"</td><td>"+t2+"</td>" +
+            "<td><img src=\"https://img.icons8.com/color/48/000000/delete-sign.png\" style=\"width:20px; margin-left: 40px; cursor: pointer;\" onclick='remove(this);'></td>" +
+            "</tr>";
+    }
+
+</script>
+<table>
+    <tbody id="tabel">
+
+    </tbody>
+</table>
+<div style="margin: 20px 0px 20px 0px;">
+    <input type="text" id="text1">
+    <input type="text" id="text2">
+    <input type="button" value="Add row" onclick="fillTable('tabel')">
+</div>
+
+&lt;!&ndash; Bootstrap & Core Scripts &ndash;&gt;
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
+<script src="https://getbootstrap.com/dist/js/bootstrap.min.js"></script>
+
+<script type="text/javascript">
+    $('tbody').sortable();
+</script>
+</body>
+</html>-->
